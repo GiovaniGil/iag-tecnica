@@ -1,0 +1,44 @@
+<table *ngIf="indicadores.length > 0" class="table table-hover" style="cursor: pointer;">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Data Integração</th>
+      <th scope="col">Última alteração</th>
+      <th scope="col">Fórmula Cálculo</th>
+      <th scope="col">idDrgIntegracao</th>
+
+      <th scope="col">identDirecaoSeta</th>
+      <th scope="col">identPeriodicidade</th>
+      <th scope="col">identReferencial</th>
+      <th scope="col">informacoesAdicionais</th>
+      <th scope="col">nome</th>
+      
+      <th scope="col">numDecimais</th>
+      <th scope="col">objetivo</th>
+      <th scope="col">unidade</th>
+      <th scope="col">usuarioUltAlteracao</th>
+      <th scope="col">versao</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let indicador of indicadores" (click)="atualizar(indicador)" >
+      <th scope="row">{{indicador.id}}</th>
+      <td>{{indicador.dataIntegracao}}</td>
+      <td>{{indicador.dataUltAlteracao}}</td>
+      <td>{{indicador.formulaCalculo}}</td>
+      <td>{{indicador.idDrgIntegracao}}</td>
+
+      <td>{{indicador.identDirecaoSeta}}</td>
+      <td>{{indicador.identPeriodicidade}}</td>
+      <td>{{indicador.identReferencial}}</td>
+      <td>{{indicador.informacoesAdicionais}}</td>
+      <td>{{indicador.nome}}</td>
+
+      <td>{{indicador.numDecimais}}</td>
+      <td>{{indicador.objetivo}}</td>
+      <td>{{indicador.unidade}}</td>
+      <td>{{indicador.usuarioUltAlteracao}}</td>
+      <td>{{indicador.versao}}</td>
+    </tr>
+  </tbody>
+</table>

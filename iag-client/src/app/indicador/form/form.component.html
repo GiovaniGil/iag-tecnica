@@ -1,0 +1,162 @@
+<p *ngIf="mensagem.length && !indicador.id" id="mensagem" class="alert alert-info alert-dismissible fade show">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>{{mensagem}}</p>
+
+<form (submit)="salvar($event)">
+
+  <input type="hidden" [(ngModel)]="indicador.id" name="id" id="id" />
+
+
+  <ul class="nav justify-content-end">
+    <li class="nav-item">
+      <div class="row">
+
+        <div class="col-md-auto">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Busca por ID" aria-label="Recipient's username" aria-describedby="basic-addon2"
+              (keydown.enter)="$event.preventDefault()" #buscaId>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" (click)="buscarPorId(buscaId.value)">
+                <i fa [name]="'search'"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-auto">
+          <button class="btn btn-success" name="salvar" type="submit" id="salvar">
+            <i fa [name]="'save'"></i> {{botaoSalvarLabel}}</button>
+        </div>
+        <div class="col-md-auto ">
+          <button class="btn btn-primary" name="limpar" type="button" id="limpar" (click)="limpar()">
+            <i fa [name]="'eraser'"></i> Limpar</button>
+        </div>
+        <div *ngIf="indicador.id" class="col-md-auto">
+          <button class="btn btn-danger" name="remover" type="button" id="remover" (click)="remover(indicador)">
+            <i fa [name]="'trash'"></i> Remover</button>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <h3 *ngIf="indicador.id" class="row">Editando Registro: {{indicador.id}}</h3>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="nome">Data Integração</label>
+        <input type="text" class="form-control" id="dataIntegracao" name="dataIntegracao" placeholder="" [(ngModel)]="indicador.dataIntegracao">
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="nome">Data Ult Alteração</label>
+        <input type="text" class="form-control" id="dataUltAlteracao" name="dataUltAlteracao" placeholder="" [(ngModel)]="indicador.dataUltAlteracao">
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="nome">Fórmula Cálculo</label>
+        <input type="text" class="form-control" id="formulaCalculo" name="formulaCalculo" placeholder="" [(ngModel)]="indicador.formulaCalculo">
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="nome">Id Drg Integraçãoo</label>
+        <input type="text" class="form-control" id="idDrgIntegracao" name="idDrgIntegracao" placeholder="" [(ngModel)]="indicador.idDrgIntegracao">
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="nome">Ident. Direção Seta</label>
+        <input type="text" class="form-control" id="identDirecaoSeta" name="identDirecaoSeta" placeholder="" [(ngModel)]="indicador.identDirecaoSeta">
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="nome">Ident. Periodicidade</label>
+        <input type="text" class="form-control" id="identPeriodicidade" name="identPeriodicidade" placeholder="" [(ngModel)]="indicador.identPeriodicidade">
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="nome">Ident. Referencial</label>
+        <input type="text" class="form-control" id="identReferencial" name="identReferencial" placeholder="" [(ngModel)]="indicador.identReferencial">
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="nome">Informações Adicionais</label>
+        <input type="text" class="form-control" id="informacoesAdicionais" name="informacoesAdicionais" placeholder="" [(ngModel)]="indicador.informacoesAdicionais">
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" class="form-control" id="nome" name="nome" placeholder="" [(ngModel)]="indicador.nome">
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="nome">Num Decimais</label>
+        <input type="text" class="form-control" id="numDecimais" name="numDecimais" placeholder="" [(ngModel)]="indicador.numDecimais">
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="nome">Objetivo</label>
+        <input type="text" class="form-control" id="objetivo" name="objetivo" placeholder="" [(ngModel)]="indicador.objetivo">
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="nome">Unidade</label>
+        <input type="text" class="form-control" id="unidade" name="unidade" placeholder="" [(ngModel)]="indicador.unidade">
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="nome">Usuário Ult Alteração</label>
+        <input type="text" class="form-control" id="usuarioUltAlteracao" name="usuarioUltAlteracao" placeholder="" [(ngModel)]="indicador.usuarioUltAlteracao">
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="nome">Versão</label>
+        <input type="text" class="form-control" id="versao" name="versao" placeholder="" [(ngModel)]="indicador.versao">
+      </div>
+    </div>
+  </div>
+</form>
